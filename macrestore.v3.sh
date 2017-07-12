@@ -73,7 +73,7 @@ echo "$(tput setaf 6 && tput bold)Mac OS Reinstaller$(tput sgr0)"
 volumeName=$(diskutil info /dev/disk0s2 | grep "Volume Name" | cut -d ":" -f2 | sed -e 's/^[[:space:]]*//')
 volumeUsed=$(diskutil info /dev/disk0s2 | grep "Volume Used Space" | cut -d ":" -f2 | egrep -o '\(0.[1-9]+%\)')
 echo $volumeName $volumeUsed
-if [[ $volumeName != "ERASED" || $volumeUsed == "" ]]; then
+if [[ ($volumeName != "ERASED" && $volumeName != "Untitled") || $volumeUsed == "" ]]; then
 	partition
 	if [[ $? == 1 ]]; then
 		# Erase /dev/disk0s2 directly
