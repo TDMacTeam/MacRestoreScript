@@ -117,6 +117,8 @@ if [[ $volumeName != "Macintosh HD" || $volumeType != "Disk Image" ]]; then
 	else
 		mountPoint=$(diskutil list | grep -A 3 "(disk image)" | grep /dev/disk | cut -c 1-10)
 	fi
+else
+	mountPoint="/dev/disk2"
 fi
 
 # Copy the drive image over
